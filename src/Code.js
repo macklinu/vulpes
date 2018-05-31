@@ -7,6 +7,8 @@ export const Code = styled.code`
   ${fontSize};
 `
 
+Code.displayName = 'Code'
+
 Code.defaultProps = {
   fontSize: 2,
   color: 'blue',

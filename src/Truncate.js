@@ -2,9 +2,7 @@ import system from 'system-components'
 import { Text } from './Text'
 
 export const Truncate = system(
-  {
-    is: Text,
-  },
+  { is: Text },
   {
     overflow: 'hidden',
     whiteSpace: 'nowrap',

@@ -9,45 +9,16 @@ export const Position = system(
   'bottom',
   'left'
 )
-
 Position.displayName = 'Position'
 
-export const Relative = system(
-  {
-    is: Position,
-  },
-  {
-    position: 'relative',
-  }
-)
+export const Relative = system({ is: Position }, { position: 'relative' })
 Relative.displayName = 'Relative'
 
-export const Absolute = system(
-  {
-    is: Position,
-  },
-  {
-    position: 'absolute',
-  }
-)
+export const Absolute = system({ is: Position }, { position: 'absolute' })
 Absolute.displayName = 'Absolute'
 
-export const Fixed = system(
-  {
-    is: Position,
-  },
-  {
-    position: 'fixed',
-  }
-)
+export const Fixed = system({ is: Position }, { position: 'fixed' })
 Fixed.displayName = 'Fixed'
 
-export const Sticky = system(
-  {
-    is: Position,
-  },
-  {
-    position: 'sticky',
-  }
-)
+export const Sticky = system({ is: Position }, { position: 'sticky' })
 Sticky.displayName = 'Sticky'

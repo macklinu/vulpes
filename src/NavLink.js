@@ -9,7 +9,7 @@ export const NavLink = system(
     fontWeight: 'bold',
     p: 2,
   },
-  props => ({
+  () => ({
     display: 'inline-flex',
     alignItems: 'center',
     alignSelf: 'stretch',

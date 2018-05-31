@@ -20,9 +20,7 @@ const breakpoints = ({ theme: { breakpoints } }) => ({
 const hidden = key => props =>
   props[key]
     ? {
-        [breakpoints(props)[key]]: {
-          display: 'none',
-        },
+        [breakpoints(props)[key]]: { display: 'none' },
       }
     : null
 

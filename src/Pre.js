@@ -7,9 +7,7 @@ export const Pre = system(
     fontFamily: 'mono',
     m: 0,
   },
-  {
-    overflow: 'auto',
-  },
+  { overflow: 'auto' },
   'fontFamily',
   'space',
   'color'
