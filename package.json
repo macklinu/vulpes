@@ -1,10 +1,16 @@
 {
   "name": "vulpes",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "dist/vulpes.cjs.js",
+  "module": "dist/vulpes.es.js",
+  "browser": "dist/vulpes.js",
+  "unpkg": "dist/vulpes.min.js",
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
-    "build": "babel src -d dist"
+    "build": "rimraf dist && bili"
   },
   "dependencies": {
     "grid-styled": "^4.0.0",
@@ -13,18 +19,15 @@
     "system-components": "^2.0.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "bili": "^3.1.2",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "prettier": "^1.12.1",
     "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react-dom": "^16.3.2",
+    "rimraf": "^2.6.2"
   }
 }
