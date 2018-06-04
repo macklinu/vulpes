@@ -6,6 +6,7 @@ import {
   NavLink,
   Switch,
 } from 'react-router-dom'
+import kebabCase from 'lodash/kebabCase'
 
 import { Flex, Box, Provider, Container, Heading, theme } from 'vulpes'
 
@@ -31,59 +32,31 @@ function renderNavList(list) {
   ))
 }
 
-const foundations = [
-  {
-    path: '/foundations/color',
-    name: 'Color',
-    component: Loader.Component(() => import('./Color')),
-  },
-  {
-    path: '/foundations/typography',
-    name: 'Typography',
-    component: Loader.Component(() => import('./Typography')),
-  },
-  {
-    path: '/foundations/iconography',
-    name: 'Iconography',
-    component: Loader.Component(() => import('./Iconography')),
-  },
-]
+function createRoutes({ pathPrefix, loader, names }) {
+  return names.map(name => ({
+    path: `/${pathPrefix}/${kebabCase(name)}`,
+    name,
+    component: loader(name),
+  }))
+}
 
-const components = [
-  {
-    path: '/components/button',
-    name: 'Button',
-    component: Loader.Markdown(() => import('./md/Button.md')),
-  },
-  {
-    path: '/components/heading',
-    name: 'Heading',
-    component: Loader.Markdown(() => import('./md/Heading.md')),
-  },
-  {
-    path: '/components/text',
-    name: 'Text',
-    component: Loader.Markdown(() => import('./md/Text.md')),
-  },
-  {
-    path: '/components/truncate',
-    name: 'Truncate',
-    component: Loader.Markdown(() => import('./md/Truncate.md')),
-  },
-]
+const foundations = createRoutes({
+  pathPrefix: 'foundations',
+  loader: name => Loader.Component(() => import(`./${name}`)),
+  names: ['Color', 'Typography', 'Iconography'],
+})
 
-const resources = [
-  {
-    path: '/resources/layout',
-    name: 'Layout',
-    component: Loader.Markdown(() => import('./md/Layout.md')),
-  },
-  {
-    path: '/resources/contributing',
-    name: 'Contributing',
-    component: Loader.Markdown(() => import('./md/Contributing.md')),
-  },
-]
+const components = createRoutes({
+  pathPrefix: 'components',
+  loader: name => Loader.Markdown(() => import(`./md/${name}.md`)),
+  names: ['Button', 'Heading', 'Text', 'Truncate'],
+})
+
+const resources = createRoutes({
+  pathPrefix: 'resources',
+  loader: name => Loader.Markdown(() => import(`./md/${name}.md`)),
+  names: ['Layout', 'Contributing'],
+})
 
 const Sections = {
   LogoHeader: class LogoHeader extends React.Component {
