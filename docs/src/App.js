@@ -49,7 +49,7 @@ const foundations = createRoutes({
 const components = createRoutes({
   pathPrefix: 'components',
   loader: name => Loader.Markdown(() => import(`./md/${name}.md`)),
-  names: ['Button', 'Heading', 'Text', 'Truncate'],
+  names: ['Button', 'Heading', 'Input', 'Text', 'Truncate'],
 })
 
 const resources = createRoutes({

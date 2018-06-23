@@ -1,6 +1,6 @@
 import system from 'system-components';
 import { createElement } from 'react';
-import { themeGet, borderRadius, color, fontSize } from 'styled-system';
+import { themeGet, borderRadius, color, fontSize, space, theme } from 'styled-system';
 import styled, { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Box } from 'grid-styled';
@@ -58,8 +58,8 @@ var radii = [0, 2, 4];
 var borders = [0, "1px solid ".concat(colors.grey[1]), "2px solid ".concat(colors.grey[1])];
 var shadows = ['none', "inset 0 0 0 1px ".concat(colors.grey[1]), "inset 0 0 0 1px ".concat(colors.grey[1], ", 0 0 4px ").concat(colors.grey[1])];
 var boxShadows = ["0 0 2px 0 rgba(0,0,0,.08),0 1px 4px 0 rgba(0,0,0,.16)", "0 0 2px 0 rgba(0,0,0,.08),0 2px 8px 0 rgba(0,0,0,.16)", "0 0 2px 0 rgba(0,0,0,.08),0 4px 16px 0 rgba(0,0,0,.16)", "0 0 2px 0 rgba(0,0,0,.08),0 8px 32px 0 rgba(0,0,0,.16)"];
-var space = [0, 4, 8, 16, 32, 64, 128];
-var theme = {
+var space$1 = [0, 4, 8, 16, 32, 64, 128];
+var theme$1 = {
   breakpoints: breakpoints,
   mediaQueries: mediaQueries,
   borders: borders,
@@ -69,7 +69,7 @@ var theme = {
   fontWeights: fontWeights,
   radii: radii,
   shadows: shadows,
-  space: space,
+  space: space$1,
   boxShadows: boxShadows
 };
 
@@ -253,7 +253,7 @@ Card$$1.defaultProps = {
   borderColor: 'grey.0',
   borderRadius: 1,
   borderWidth: 1,
-  theme: theme
+  theme: theme$1
 };
 Card$$1.displayName = 'Card';
 
@@ -287,7 +287,7 @@ Heading.defaultProps = {
   regular: true,
   fontSize: 4,
   m: 0,
-  theme: theme
+  theme: theme$1
 };
 Heading.h1 = Heading.withComponent('h1');
 Heading.h1.defaultProps = {
@@ -369,6 +369,35 @@ var hidden = function hidden(key) {
 var Hide$$1 = styled(Box)(_templateObject$2(), hidden('xs'), hidden('sm'), hidden('md'), hidden('lg'), hidden('xl'));
 Hide$$1.displayName = 'Hide';
 
+function _templateObject$3() {
+  var data = _taggedTemplateLiteral(["\n  appearance: none;\n  display: block;\n  width: 100%;\n  font-family: inherit;\n  color: inherit;\n  font-size: ", "px;\n  background-color: transparent;\n  border-radius: ", ";\n  border-width: 0px;\n  border-style: solid;\n  border-color: ", ";\n  padding-top: 14px;\n  padding-bottom: 14px;\n  padding-left: 12px;\n  padding-right: 12px;\n  margin: 0;\n  ::placeholder {\n    color: ", ";\n  }\n  ::-ms-clear {\n    display: none;\n  }\n  ", ";\n  ", ";\n"]);
+
+  _templateObject$3 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var borders$1 = function borders(_ref) {
+  var color$$1 = _ref.color,
+      theme$$1 = _ref.theme;
+  var borderColor = color$$1 ? theme$$1.colors[color$$1] : theme$$1.colors.grey[1];
+  var focusColor = color$$1 ? borderColor : theme$$1.colors.blue[0];
+  return {
+    'border-color': borderColor,
+    'box-shadow': "0 0 0 1px ".concat(borderColor),
+    ':focus': {
+      outline: 0,
+      'border-color': focusColor,
+      'box-shadow': "0 0 0 2px ".concat(focusColor)
+    }
+  };
+};
+
+var Input = styled.input(_templateObject$3(), theme('fontSizes.1'), theme('radius'), theme('colors.grey.1'), theme('colors.gray.1'), borders$1, space);
+Input.displayName = 'Input';
+
 function Lead(props) {
   return createElement(Text, _extends({
     is: "p",
@@ -378,23 +407,23 @@ function Lead(props) {
 }
 Lead.displayName = 'Lead';
 
-function _templateObject$3() {
+function _templateObject$4() {
   var data = _taggedTemplateLiteral(["\n  cursor: pointer;\n  text-decoration: none;\n  ", ";\n  &:hover {\n    text-decoration: underline;\n  }\n"]);
 
-  _templateObject$3 = function _templateObject() {
+  _templateObject$4 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Link = styled.a(_templateObject$3(), color);
+var Link = styled.a(_templateObject$4(), color);
 Link.displayName = 'Link';
 Link.propTypes = {
   color: PropTypes.string
 };
 Link.defaultProps = {
   color: 'blue.1',
-  theme: theme
+  theme: theme$1
 };
 
 var Measure = system({
@@ -450,7 +479,7 @@ var Provider = function Provider(_ref) {
       props = _objectWithoutProperties(_ref, ["theme"]);
 
   return createElement(ThemeProvider, {
-    theme: Object.assign({}, theme, theme$$1)
+    theme: Object.assign({}, theme$1, theme$$1)
   }, createElement(Root, props));
 };
 Provider.displayName = 'Vulpes.Provider';
@@ -491,4 +520,4 @@ var Sticky = system({
 });
 Sticky.displayName = 'Sticky';
 
-export { theme, Blockquote, Button, ButtonOutline, Card$$1 as Card, Code, Container$$1 as Container, Heading, Hide$$1 as Hide, Lead, Link, Measure, NavLink, Pre, Provider, Root, Text, Truncate, Position, Relative, Absolute, Fixed, Sticky };
+export { theme$1 as theme, Blockquote, Button, ButtonOutline, Card$$1 as Card, Code, Container$$1 as Container, Heading, Hide$$1 as Hide, Input, Lead, Link, Measure, NavLink, Pre, Provider, Root, Text, Truncate, Position, Relative, Absolute, Fixed, Sticky };

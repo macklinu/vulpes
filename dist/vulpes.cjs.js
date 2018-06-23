@@ -375,6 +375,35 @@ var hidden = function hidden(key) {
 var Hide$$1 = styled__default(gridStyled.Box)(_templateObject$2(), hidden('xs'), hidden('sm'), hidden('md'), hidden('lg'), hidden('xl'));
 Hide$$1.displayName = 'Hide';
 
+function _templateObject$3() {
+  var data = _taggedTemplateLiteral(["\n  appearance: none;\n  display: block;\n  width: 100%;\n  font-family: inherit;\n  color: inherit;\n  font-size: ", "px;\n  background-color: transparent;\n  border-radius: ", ";\n  border-width: 0px;\n  border-style: solid;\n  border-color: ", ";\n  padding-top: 14px;\n  padding-bottom: 14px;\n  padding-left: 12px;\n  padding-right: 12px;\n  margin: 0;\n  ::placeholder {\n    color: ", ";\n  }\n  ::-ms-clear {\n    display: none;\n  }\n  ", ";\n  ", ";\n"]);
+
+  _templateObject$3 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var borders$1 = function borders(_ref) {
+  var color = _ref.color,
+      theme = _ref.theme;
+  var borderColor = color ? theme.colors[color] : theme.colors.grey[1];
+  var focusColor = color ? borderColor : theme.colors.blue[0];
+  return {
+    'border-color': borderColor,
+    'box-shadow': "0 0 0 1px ".concat(borderColor),
+    ':focus': {
+      outline: 0,
+      'border-color': focusColor,
+      'box-shadow': "0 0 0 2px ".concat(focusColor)
+    }
+  };
+};
+
+var Input = styled__default.input(_templateObject$3(), styledSystem.theme('fontSizes.1'), styledSystem.theme('radius'), styledSystem.theme('colors.grey.1'), styledSystem.theme('colors.gray.1'), borders$1, styledSystem.space);
+Input.displayName = 'Input';
+
 function Lead(props) {
   return React.createElement(Text, _extends({
     is: "p",
@@ -384,16 +413,16 @@ function Lead(props) {
 }
 Lead.displayName = 'Lead';
 
-function _templateObject$3() {
+function _templateObject$4() {
   var data = _taggedTemplateLiteral(["\n  cursor: pointer;\n  text-decoration: none;\n  ", ";\n  &:hover {\n    text-decoration: underline;\n  }\n"]);
 
-  _templateObject$3 = function _templateObject() {
+  _templateObject$4 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Link = styled__default.a(_templateObject$3(), styledSystem.color);
+var Link = styled__default.a(_templateObject$4(), styledSystem.color);
 Link.displayName = 'Link';
 Link.propTypes = {
   color: PropTypes.string
@@ -508,6 +537,7 @@ exports.Code = Code;
 exports.Container = Container$$1;
 exports.Heading = Heading;
 exports.Hide = Hide$$1;
+exports.Input = Input;
 exports.Lead = Lead;
 exports.Link = Link;
 exports.Measure = Measure;
